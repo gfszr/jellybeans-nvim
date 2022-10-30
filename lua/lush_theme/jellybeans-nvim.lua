@@ -45,8 +45,10 @@
 local lush = require('lush')
 local hsl = lush.hsl
 
+local pinky      = hsl("#bc9fe0")
+local whitey     = hsl("#eeeeee")
 local foreground = hsl("#e8e8d3")
-local background = hsl("#151515")
+local background = hsl("#100f0f")
 local grey       = hsl("#888888")
 local grey_one   = hsl("#1c1c1c")
 local grey_two   = hsl("#f0f0f0")
@@ -90,7 +92,7 @@ local old_brick = hsl("#902020")
 local dark_blue = hsl("#0000df")
 local ripe_plum = hsl("#540063")
 local casal = hsl("#2D7067")
-local purple = hsl("#700089")
+local purple = hsl("#800089")
 local tea_green  =hsl("#d2ebbe")
 local dell = hsl("#437019")
 local calypso = hsl("#2B5B77")
@@ -112,7 +114,7 @@ local theme = lush(function()
     Comment      { fg = grey }, -- any comment
     ColorColumn  { bg = total_black }, -- used for the columns set with 'colorcolumn'
     Conceal      { fg = morning_glory }, -- placeholder characters substituted for concealed text (see 'conceallevel')
-    Cursor       { fg = background, bg = perano }, -- character under the cursor
+    Cursor       { fg = background, bg = ship_cove }, -- character under the cursor
     -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM     { }, -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn { bg = grey_one }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
@@ -143,10 +145,10 @@ local theme = lush(function()
     Normal       { bg = background, fg = foreground }, -- normal text
     -- NormalFloat  { }, -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
-    Pmenu        { fg = total_white, bg = background.lighten(4) }, -- Popup menu: normal item.
-    PmenuSel     { fg = total_black, bg = ship_cove, gui = "bold" }, -- Popup menu: selected item.
-    -- PmenuSbar    { }, -- Popup menu: scrollbar.
-    -- PmenuThumb   { }, -- Popup menu: Thumb of the scrollbar.
+    Pmenu        { fg = total_white, bg = scorpion }, -- Popup menu: normal item.
+    PmenuSel     { fg = cod_grey, bg = whitey, gui = "bold" }, -- Popup menu: selected item.
+    PmenuSbar    { fg = grey, bg = grey }, -- Popup menu: scrollbar.
+    PmenuThumb   { fg = grey_two, bg = grey_two }, -- Popup menu: Thumb of the scrollbar.
     Question     { fg = mantis }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine { bg = bright_grey }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     Search       { fg = wewak, bg = cocoa_brown }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
@@ -181,10 +183,10 @@ local theme = lush(function()
     -- Boolean        { }, --  a boolean constant: TRUE, false
     -- Float          { }, --    a floating point constant: 2.3e10
 
-    Identifier     { fg = biloba_flower }, -- (preferred) any variable name
+    Identifier     { fg = pinky }, -- (preferred) any variable name
     Function       { fg = goldenrod }, -- function name (also: methods for classes)
 
-    Statement      { fg = perano }, -- (preferred) any statement
+    Statement      { fg = ship_cove }, -- (preferred) any statement
     -- Conditional    { }, --  if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --    case, default, etc.
@@ -203,7 +205,7 @@ local theme = lush(function()
     Structure      { fg = morning_glory }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
 
-    Special        { fg = hsl(155, 30, 65) }, -- highland -- (preferred) any special symbol
+    Special        { fg =  green_smoke }, -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
     -- Tag            { }, --    you can use CTRL-] on this
     Delimiter      { fg = hoki }, --  character that needs attention
@@ -231,17 +233,17 @@ local theme = lush(function()
 
     LspDiagnosticsDefaultError           { fg = old_brick.lighten(20) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     LspDiagnosticsDefaultWarning         { fg = koromiko }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultInformation     { fg = perano }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultInformation     { fg = ship_cove }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     LspDiagnosticsDefaultHint            { fg = tea_green }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
     LspDiagnosticsVirtualTextError       { LspDiagnosticsDefaultError, bg = old_brick.darken(72) }, -- Used for "Error" diagnostic virtual text
     LspDiagnosticsVirtualTextWarning     { LspDiagnosticsDefaultWarning, bg = koromiko.darken(88) }, -- Used for "Warning" diagnostic virtual text
-    LspDiagnosticsVirtualTextInformation { LspDiagnosticsDefaultInformation, bg = perano.darken(87) }, -- Used for "Information" diagnostic virtual text
+    LspDiagnosticsVirtualTextInformation { LspDiagnosticsDefaultInformation, bg = ship_cove.darken(87) }, -- Used for "Information" diagnostic virtual text
     LspDiagnosticsVirtualTextHint        { LspDiagnosticsDefaultHint, bg = tea_green.darken(90) }, -- Used for "Hint" diagnostic virtual text
 
     LspDiagnosticsUnderlineError         { sp = old_brick.lighten(20), gui="undercurl" }, -- Used to underline "Error" diagnostics
     LspDiagnosticsUnderlineWarning       { sp = koromiko, gui="undercurl" }, -- Used to underline "Warning" diagnostics
-    LspDiagnosticsUnderlineInformation   { sp = perano, gui="undercurl" }, -- Used to underline "Information" diagnostics
+    LspDiagnosticsUnderlineInformation   { sp = ship_cove, gui="undercurl" }, -- Used to underline "Information" diagnostics
     LspDiagnosticsUnderlineHint          { sp = tea_green, gui="undercurl" }, -- Used to underline "Hint" diagnostics
 
     -- LspDiagnosticsFloatingError          { }, -- Used to color "Error" diagnostic messages in diagnostics float
@@ -317,15 +319,15 @@ local theme = lush(function()
 
     -- GitSigns
     GitSignsAdd    { fg = mantis };
-    GitSignsChange { fg = koromiko };
+    GitSignsChange { fg = purple };
     GitSignsDelete { fg = old_brick.lighten(20) };
 
     -- Telescope
-    TelescopeBorder { fg = ship_cove };
-    TelescopeSelection { fg = ship_cove.lighten(46), bg = ship_cove.darken(74) };
+    TelescopeBorder { fg = total_white };
+    TelescopeSelection { fg = total_white, bg = grey_one };
     TelescopeMatching { Search };
-    TelescopeSelectionCaret { fg = koromiko };
-    TelescopePromptPrefix { fg = koromiko };
+    TelescopeSelectionCaret { fg = hsl("#a7d3a9") };
+    TelescopePromptPrefix { fg = goldenrod };
 
     -- vim-sneak
 
